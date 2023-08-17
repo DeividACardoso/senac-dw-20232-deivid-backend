@@ -1,24 +1,36 @@
-package br.sc.senac.dw.entidade;
+package br.sc.senac.dw.model.entidade;
 
 import java.time.LocalDate;
 
-import lombok.Data;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "produtos")
+@NoArgsConstructor
 public class Produto{
-	private int id;
+	
+	@jakarta.persistence.Id
+	private Integer id;
 	private String nome;
 	private String fabricante;
 	private double valor;
 	private double peso;
-	private LocalDate dataCadastro;
+	private LocalDate dt_Cadastro;
 	
-	public Produto(String nome, String fabricante, double valor, double peso, LocalDate dataCadastro) {
+	public Produto(String nome, String fabricante, double valor, double peso, LocalDate dt_Cadastro) {
 		super();
 		this.nome = nome;
 		this.fabricante = fabricante;
 		this.valor = valor;
 		this.peso = peso;
-		this.dataCadastro = dataCadastro;
+		this.dt_Cadastro = dt_Cadastro;
+	}
+	
+	public Produto() {
+		
 	}
 
 	public int getId() {
@@ -61,12 +73,12 @@ public class Produto{
 		this.peso = peso;
 	}
 
-	public LocalDate getDataCadastro() {
-		return dataCadastro;
+	public LocalDate getDt_cadastro() {
+		return dt_Cadastro;
 	}
 
-	public void setDataCadastro(LocalDate dataCadastro) {
-		this.dataCadastro = dataCadastro;
+	public void setDt_cadastro(LocalDate dt_Cadastro) {
+		this.dt_Cadastro = dt_Cadastro;
 	}
 	
 	
