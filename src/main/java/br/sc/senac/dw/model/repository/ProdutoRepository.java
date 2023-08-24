@@ -7,5 +7,4 @@ import br.sc.senac.dw.model.entidade.Produto;
 
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long>{
-
 }
