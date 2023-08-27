@@ -3,12 +3,15 @@ package br.sc.senac.dw.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.sc.senac.dw.exception.CampoInvalidoException;
 import br.sc.senac.dw.model.entidade.Produto;
 import br.sc.senac.dw.model.repository.ProdutoRepository;
+import br.sc.senac.dw.model.seletor.ProdutoSeletor;
+import br.sc.senac.dw.model.specification.ProdutoSpecifications;
 
 @Service
 public class ProdutoService {
@@ -65,6 +68,11 @@ public class ProdutoService {
 		return true;
 	}
 
+	public List<Produto> listarComSeletor(ProdutoSeletor seletor) {
+		//https://www.baeldung.com/spring-data-jpa-query-by-example
+		Specification<Produto> specification = ProdutoSpecifications.comFiltros(seletor);
+		return produtoRepository.findAll(specification);
+	}
 }
 
 
