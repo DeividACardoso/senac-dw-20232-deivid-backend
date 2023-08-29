@@ -40,7 +40,6 @@ public class ProdutoService {
 	private void validarCamposObrigatorios(Produto produto) throws CampoInvalidoException {
 		String mensagemValidacao = "";
 		mensagemValidacao += validarCampoString(produto.getNome(), "nome");
-		mensagemValidacao += validarCampoString(produto.getFabricante(), "fabricante");
 		mensagemValidacao += validarCampoDouble(produto.getValor(), "valor");
 		mensagemValidacao += validarCampoDouble(produto.getPeso(), "peso");
 		

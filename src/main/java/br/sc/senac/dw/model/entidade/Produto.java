@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
 
@@ -19,71 +21,60 @@ public class Produto{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	private String fabricante;
+	@ManyToOne
+	@JoinColumn(name = "id_fabricante")
+	private Fabricante fabricante;
 	private double valor;
 	private double peso;
 	private LocalDate dt_Cadastro;
 	
-	public Produto(String nome, String fabricante, double valor, double peso, LocalDate dt_Cadastro) {
+	public Produto(Integer id, String nome, Fabricante fabricante, double valor, double peso, LocalDate dt_Cadastro) {
 		super();
+		this.id = id;
 		this.nome = nome;
 		this.fabricante = fabricante;
 		this.valor = valor;
 		this.peso = peso;
 		this.dt_Cadastro = dt_Cadastro;
 	}
-	
 	public Produto() {
-		
+		super();
 	}
-
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-
 	public String getNome() {
 		return nome;
 	}
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public String getFabricante() {
+	public Fabricante getFabricante() {
 		return fabricante;
 	}
-
-	public void setFabricante(String fabricante) {
+	public void setFabricante(Fabricante fabricante) {
 		this.fabricante = fabricante;
 	}
-
 	public double getValor() {
 		return valor;
 	}
-
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-
 	public double getPeso() {
 		return peso;
 	}
-
 	public void setPeso(double peso) {
 		this.peso = peso;
 	}
-
-	public LocalDate getDt_cadastro() {
+	public LocalDate getDt_Cadastro() {
 		return dt_Cadastro;
 	}
-
-	public void setDt_cadastro(LocalDate dt_Cadastro) {
+	public void setDt_Cadastro(LocalDate dt_Cadastro) {
 		this.dt_Cadastro = dt_Cadastro;
 	}
-	
 	
 }
