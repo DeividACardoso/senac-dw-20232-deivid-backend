@@ -15,14 +15,19 @@ public class ProdutoSpecifications {
         return (root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
 
-            if (seletor.getNome() != null) {
+            if (seletor.getNome() != null && seletor.getNome().trim().isEmpty()) {
                 predicates.add(cb.like(cb.lower(root.get("nome")), "%" 
                 		+ seletor.getNome().toLowerCase() + "%"));
             }
             
-            if (seletor.getFabricante() != null) {
+            if (seletor.getFabricanteCnpj() != null) {
+                predicates.add(cb.equal(cb.lower(root.join("fabricante").get("cnpj")), seletor.getFabricanteCnpj()));
+            }
+            
+            
+            if (seletor.getFabricanteNome() != null) {
                 predicates.add(cb.like(cb.lower(root.join("fabricante").get("nome")), "%" 
-                		+ seletor.getFabricante().toLowerCase() + "%"));
+                		+ seletor.getFabricanteNome().toLowerCase() + "%"));
             }
             
             // Peso BETWEEN

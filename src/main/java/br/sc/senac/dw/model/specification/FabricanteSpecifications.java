@@ -21,8 +21,7 @@ public class FabricanteSpecifications {
 			}
 			
 			if(seletor.getCnpj() != null) {
-				predicates.add(cb.like(cb.lower(root.get("cnpj")), "%" 
-						+ seletor.getCnpj() + "%"));
+				predicates.add(cb.equal((root.get("cnpj")), seletor.getCnpj()));
 			}
 			
 			if(seletor.getIdProdutos() != null) {
