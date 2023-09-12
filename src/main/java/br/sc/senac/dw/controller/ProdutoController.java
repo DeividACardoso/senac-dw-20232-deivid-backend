@@ -51,8 +51,13 @@ public class ProdutoController {
 		return produtoService.atualizar(produtoParaAtualizar) != null;
 	}
 	
-	@DeleteMapping(path = "/{id}")
-	public boolean excluir(@PathVariable Integer id) {
-		return produtoService.excluir(id);
+	@DeleteMapping(path = "/deletar-por-id/{id}")
+	public boolean excluirPorId(@PathVariable Integer id) {
+		return produtoService.excluirPorId(id);
+	}
+	
+	@DeleteMapping(path = "/deletar-por-cnpj/{cnpj}")
+	public boolean excluirPorCpf(@PathVariable String cnpj) {
+		return produtoService.excluirPorCnpj(cnpj);
 	}
 }

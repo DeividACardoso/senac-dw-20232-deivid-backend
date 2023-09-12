@@ -62,9 +62,21 @@ public class ProdutoService {
 		return "";
 	}
 
-	public boolean excluir(Integer id) {
+	public boolean excluirPorId(Integer id) {
 		produtoRepository.deleteById(id.longValue());
 		return true;
+	}
+	
+	public boolean excluirPorCnpj(String cnpj) {
+		boolean excluiu = false;
+		ProdutoSeletor pSeletor = new ProdutoSeletor();
+		
+		pSeletor.setFabricanteCnpj(cnpj);
+		List<Produto> produtoParaExcluir = listarComSeletor(pSeletor);
+		
+		excluiu = excluirPorId(produtoParaExcluir.get(0).getId());
+		
+		return excluiu;
 	}
 
 	public List<Produto> listarComSeletor(ProdutoSeletor seletor) {
@@ -72,6 +84,7 @@ public class ProdutoService {
 		Specification<Produto> specification = ProdutoSpecifications.comFiltros(seletor);
 		return produtoRepository.findAll(specification);
 	}
+
 }
 
 
