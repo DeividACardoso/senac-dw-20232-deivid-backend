@@ -44,7 +44,7 @@ public class ProdutoController {
 	@PostMapping
 	public Produto salvar(@RequestBody Produto novoProduto) throws CampoInvalidoException {
 		return produtoService.salvar(novoProduto);
-	};
+	}
 	
 	@PutMapping
 	public boolean atualizar(@RequestBody Produto produtoParaAtualizar) throws CampoInvalidoException{
