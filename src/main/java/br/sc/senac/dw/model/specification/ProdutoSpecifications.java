@@ -52,11 +52,11 @@ public class ProdutoSpecifications {
             // Data Between
             if(seletor.getDataCadastroInicial() != null && !seletor.getDataCadastroInicial().toString().trim().isEmpty()
             		&& seletor.getDataCadastroFinal() != null && !seletor.getDataCadastroFinal().toString().trim().isEmpty()) {
-            	predicates.add(cb.between(root.get("dt_cadastro"), seletor.getDataCadastroInicial(), seletor.getDataCadastroFinal()));
+            	predicates.add(cb.between(root.get("dataCadastro"), seletor.getDataCadastroInicial(), seletor.getDataCadastroFinal()));
             } else if(seletor.getDataCadastroInicial() != null && !seletor.getDataCadastroInicial().toString().trim().isEmpty()) { // Data >= Dt_Inicial
-            	predicates.add(cb.greaterThanOrEqualTo(root.get("dt_cadastro"), seletor.getDataCadastroInicial()));
+            	predicates.add(cb.greaterThanOrEqualTo(root.get("dataCadastro"), seletor.getDataCadastroInicial()));
             } else if(seletor.getDataCadastroFinal() != null && !seletor.getDataCadastroFinal().toString().trim().isEmpty()) { // Data <= Dt_Final
-            	predicates.add(cb.lessThanOrEqualTo(root.get("dt_cadastro"), seletor.getDataCadastroFinal()));
+            	predicates.add(cb.lessThanOrEqualTo(root.get("dataCadastro"), seletor.getDataCadastroFinal()));
             }
             
             return cb.and(predicates.toArray(new Predicate[0]));

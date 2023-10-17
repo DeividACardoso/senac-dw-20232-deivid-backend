@@ -2,7 +2,7 @@ package br.sc.senac.dw.model.entidade;
 
 import java.time.LocalDate;
 
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,7 +26,9 @@ public class Produto{
 	private Fabricante fabricante;
 	private double valor;
 	private double peso;
-	private LocalDate dt_Cadastro;
+	
+	@Column(name="dt_cadastro")
+	private LocalDate dataCadastro;
 	
 	public Produto(Integer id, String nome, Fabricante fabricante, double valor, double peso, LocalDate dt_Cadastro) {
 		super();
@@ -35,7 +37,7 @@ public class Produto{
 		this.fabricante = fabricante;
 		this.valor = valor;
 		this.peso = peso;
-		this.dt_Cadastro = dt_Cadastro;
+		this.dataCadastro = dt_Cadastro;
 	}
 	public Produto() {
 		super();
@@ -70,11 +72,12 @@ public class Produto{
 	public void setPeso(double peso) {
 		this.peso = peso;
 	}
-	public LocalDate getDt_Cadastro() {
-		return dt_Cadastro;
+	public LocalDate getDataCadastro() {
+		return dataCadastro;
 	}
-	public void setDt_Cadastro(LocalDate dt_Cadastro) {
-		this.dt_Cadastro = dt_Cadastro;
+	public void setDataCadastro(LocalDate dataCadastro) {
+		this.dataCadastro = dataCadastro;
 	}
+	
 	
 }
